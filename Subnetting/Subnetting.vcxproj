@@ -20,8 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IPAdressManagement.h" />
-    <ClInclude Include="IPAdressContainer.h" />
+    <ClInclude Include="IPAdress.h" />
     <ClInclude Include="MaskContainer.h" />
+    <ClInclude Include="Utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IPAdress.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MaskContainer.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

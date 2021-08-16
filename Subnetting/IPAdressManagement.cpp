@@ -33,7 +33,6 @@ void IPAdressManagement::print_task_VLSM() {
 	std::cout << "----------------VLSM Subnetting Task----------------\n\n";
 	print_IPV4();
 	print_Sub();
-	generate_HostNumbers();
 	hosts.print_Hosts(); 
 	std::cout << "Solve this Problem using VLSM Subnetting (Classless).\n";
 	std::cout << "Press Enter to view Solution ...\n\n";
@@ -190,7 +189,7 @@ void IPAdressManagement::clientProgramm() {
 						int sub = 0;
 						std::cout <<  "Input desired Subnet Mask in '\\notations' (without \\ symbol): ";
 						std::cin >> sub;
-
+						this->read_hostNumbers();
 						
 						update_IPV4(IP2);
 						this->Subnet_mask.set_Subnet(sub);

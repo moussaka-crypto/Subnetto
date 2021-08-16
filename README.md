@@ -9,8 +9,9 @@ Currently it can support:
 - Converting IP version 4 Adresses to IP version 6 Adresses
 - Determination of the Subnet of given IPV4 Address
 - VLSM Subnetting Questions:
-       - Generate VLSM subnetting szenarios (variable hosts and addresses or custom ones)
-       - Solve VLSM Subnetting Szenerios  (customs ones and generated ones)
+      
+      - Generate VLSM subnetting szenarios (variable hosts and addresses or custom ones)
+      - Solve VLSM Subnetting Szenerios  (customs ones and generated ones)
        
 
 Can you use this freely? 

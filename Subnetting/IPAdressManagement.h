@@ -3,7 +3,7 @@
 #include "IPAdress.h"
 #include "Mask.h"
 #include "Hosts.h"
-
+#include "Utility.h"
 class IPAdressManagement {
 private:
 	IPV4 IPv4;
@@ -32,6 +32,7 @@ public:
 	IPAdressManagement(std::string IP, int subnet, int version);
 	void randomize_IPV4();
 	void randomize_IPV6();
+	void randomize_Subnet();
 	void update_IPV4(std::string IP);
 	void update_IPV6(std::string IP);
 	void read_hostNumbers();
@@ -40,7 +41,8 @@ public:
 	void print_IPV6();
 	void print_task_VLSM();
 	void determine_subnet_IPV4();
-	
+	void clientProgramm();
+	void print_Sub();
 };
 
 #endif _IP_H

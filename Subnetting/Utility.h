@@ -10,6 +10,9 @@ std::string extractHexV2(std::vector<int>);
 std::vector<int> hex_to_char(char c);
 int countFreq_ofString(std::string& pat, std::string& txt);
 void elongateIPV6(std::string& Ip);
+int countFreq_ofString(std::string& pat, std::string& txt);
+int nearest_binary_base_subnets(int num);
+int nearest_binary_base_hosts(int num);
 
 #endif
 

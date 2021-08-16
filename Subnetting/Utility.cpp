@@ -179,3 +179,29 @@ int countFreq_ofString(std::string& pat, std::string& txt)
 	}
 	return res;
 }
+
+int nearest_binary_base_subnets(int num) {
+	int base = 0;
+	int i = 1;
+	for (; i < 32; i++) {
+		base = pow(2, i);
+		if (base == num)
+			return i;
+		if (base > num)
+			break;
+	}
+	return i;
+}
+
+int nearest_binary_base_hosts(int num) {
+	int base = 0;
+	int i = 1;
+	for (; i < 32; i++) {
+		base = pow(2, i) - 2;
+		if (base == num)
+			return i;
+		if (base > num)
+			break;
+	}
+	return i;
+}

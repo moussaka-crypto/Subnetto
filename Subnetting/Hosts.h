@@ -3,10 +3,8 @@
 #include <map>
 #include <iostream>
 class Hosts {
-private:
-	std::map<std::string, int > HostSet;
 public:
-
+	std::multimap<int, std::string > HostSet;
 	Hosts(){}
 	Hosts(const Hosts& orig) { this->HostSet = orig.HostSet; }
 	Hosts& operator=(const Hosts& orig) { this->HostSet = orig.HostSet; return *this; }

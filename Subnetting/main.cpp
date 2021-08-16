@@ -1,12 +1,10 @@
 #include "IPAdressManagement.h"
-#include "Utility.h"
+using namespace std;
 
 int main() {
 	srand(time(NULL));
 
-	IPAdressManagement Ipv4Problem("198.168.1.130", 25, 4);
-	Ipv4Problem.determine_subnet_IPV4();
-	/*Ipv4Problem.generate_HostNumbers();
-	Ipv4Problem.print_task_VLSM();*/
+	IPAdressManagement Ipv4Problem("200.100.48.0", 22, 4);
+	Ipv4Problem.clientProgramm();
 	return 0;
 }

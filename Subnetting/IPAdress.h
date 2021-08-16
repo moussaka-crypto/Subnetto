@@ -44,7 +44,9 @@ public:
 		Add.assign(32, 0);
 		init_IP(IP); 
 	}
+	IPV4(std::vector<int> ip) { this->Add = ip; }
 	std::string get_IP();
+	
 };
 
 class IPV6 :public IPAdress {
@@ -59,6 +61,7 @@ public:
 		Add.assign(112, 0);
 		init_IP(IP); 
 	}
+	IPV6(std::vector<int> ip) { this->Add = ip; }
 	std::string get_IP();
 	
 };

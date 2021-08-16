@@ -13,6 +13,14 @@ IPAdress& IPAdress::operator=(const IPAdress& orig) {
 void IPV4::init_IP(std::string Ip) {
 	Add.clear();
 	Add.assign(32, 0);
+	std::string target = ",";
+
+	if (Ip.find(target) != std::string::npos) {
+		if (countFreq_ofString(target, Ip) > 0)
+			throw std::invalid_argument("IPV4 IP invalid. Check IP for invalid ','");
+		
+	}
+
 	std::stringstream pars(Ip);
 	std::string segment;
 	std::vector <int> seglist;

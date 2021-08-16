@@ -1,5 +1,7 @@
 #include "IPAdressManagement.h"
 #include <sstream>
+#include "VariadicTable.h"
+#include <string>
 IPAdressManagement::IPAdressManagement (std::string IP, int subnet, int version) {
 	if (version != 4 && version != 6)
 		throw std::invalid_argument("Wrong IP Version entered");
@@ -28,10 +30,273 @@ void IPAdressManagement::print_IPV6() {
 	IPv6.printAdd();
 }
 void IPAdressManagement::print_task_VLSM() {
-	std::cout << "++++++++++++++++++\tVLSM Subnetting Task\t ++++++++++++++++++\n\n";
+	std::cout << "----------------VLSM Subnetting Task----------------\n\n";
 	print_IPV4();
+	print_Sub();
 	hosts.print_Hosts(); 
 	std::cout << "Solve this Problem using VLSM Subnetting (Classless).\n";
+	std::cout << "Press Enter to view Solution ...\n\n";
+	std::cin.get();
+	std::cin.get();
+	std::vector<int> IP = IPv4.getAdd();
+	std::vector<int> No_of_Hosts;
+	std::vector<int> networkAdress = IP;
+	std::vector<int> broadCastAdress = IP;
+	std::vector<int> lastIP = IP;
+	std::vector<int> firstIP = IP;
+	VariadicTable<std::string,std::string, std::string, std::string, std::string> vt({ "HostName","Network Address", "First IP", "Last IP","BroadcastAdress"});
+	for (auto it = hosts.HostSet.rbegin(); it != hosts.HostSet.rend(); it++) {
+		int host = nearest_binary_base_hosts(it->first);
+		std::fill(networkAdress.rbegin(), networkAdress.rbegin() + host, 0);
+		std::fill(broadCastAdress.rbegin(), broadCastAdress.rbegin() + host, 1);
+		firstIP = networkAdress;
+		lastIP = broadCastAdress;
+		*(firstIP.end() - 1) = 1;
+		*(lastIP.end() - 1) = 0;
+
+		std::string netWork= IPV4(networkAdress).get_IP();
+		std::string broad = IPV4(broadCastAdress).get_IP();
+		std::string first = IPV4(firstIP).get_IP();
+		std::string last = IPV4(lastIP).get_IP();
+		vt.addRow(it->second, netWork, first, last, broad);
+
+		IP = broadCastAdress;
+		
+		for (auto it = IP.rbegin() + host; it != IP.rend(); it++) {
+			if (*it == 0) {
+				*it = 1;
+				std::fill(IP.rbegin(), it, 0);
+				break;
+			}
+				
+		}
+		networkAdress = IP;
+		broadCastAdress = IP;
+		firstIP = IP;
+		lastIP = IP;
+
+	}
+	vt.print(std::cout);
+	
+}
+
+void IPAdressManagement::clientProgramm() {
+	try {
+		std::cout << "*************************************************************************************\n";
+		std::cout << "                  Subnettingquestionsolver  by Nilusche Liyanaarachchi  (c)          \n";
+		std::cout << "*************************************************************************************\n";
+
+		while (true)
+		{
+		menu:
+
+			std::cout << "Main Menu\n\n";
+			std::cout << "1) Work with IP Version 4\n";
+			std::cout << "2) Work with IP Version 6\n";
+			std::cout << "3) Shutdown program\n\n";
+			int i = 0;
+			std::cin >> i;
+
+			if (i == 1) {
+			Ipv4:
+				system("cls");
+				std::cout << "*************************************************************************************\n";
+				std::cout << "                  Subnettingquestions-solver  by Nilusche Liyanaarachchi  (c)        \n";
+				std::cout << "*************************************************************************************\n";
+				std::cout << "IP VERSION 4 Menu\n\n";
+				std::cout << "1) Input IP Version 4 IP Adress\n";
+				std::cout << "2) Determine the subnet of given IP adress\n";
+				std::cout << "3) VLSM Subnetting Question and Solver\n";
+				std::cout << "4) Go Back to Menu\n\n";
+				int l = 0;
+				std::cin >> l;
+
+				if (l == 1) {
+					std::string IP = "";
+					std::cout << "IP: ";
+					std::cin>>IP;
+					update_IPV4(IP);
+					std::cout << "reading IP ... Press Enter\n";
+					std::cin.get();
+					std::cin.get();
+					goto Ipv4;
+				}
+				if (l == 2) {
+					std::cout << "Input desired Subnet Mask in '\\notations' (without \\ symbol): ";
+					int notation = 0;
+					std::cin >> notation;
+					this->Subnet_mask.set_Subnet(notation);
+					std::cout << "Press Enter to continue\n";
+					std::cin.get();
+					std::cin.get();
+					determine_subnet_IPV4();	
+					std::cout << "Press Enter to go Back\n";
+					std::cin.get();
+					std::cin.get();
+					goto Ipv4;
+				}
+				if (l == 3) {
+				VLSM:
+					system("cls");
+					std::cout << "*************************************************************************************\n";
+					std::cout << "                  Subnettingquestions-solver  by Nilusche Liyanaarachchi  (c)        \n";
+					std::cout << "*************************************************************************************\n";
+					std::cout << "VLSM Subetting\n\n";
+					std::cout << "1) Generate random VLSM Subnetting tasks (random Hosts and random IP)\n";
+					std::cout << "2) Generate random VLSM Subnetting tasks (random Hosts but custom IP)\n";
+					std::cout << "3) Create custom VLSM Task (custom number of Hosts and custom IP)\n";
+					std::cout << "4) Go back to Main Menu\n";
+
+					int k = 0;
+					std::cin >> k;
+					if (k == 1) {
+						randomize_IPV4();
+						randomize_Subnet();
+						generate_HostNumbers();
+						print_task_VLSM();
+						std::cin.get();
+						goto VLSM;
+					}
+					if (k == 2) {
+						std::string IP2 = "";
+						std::cout << "Input IP: ";
+						std::cin >> IP2;
+						randomize_Subnet();
+						update_IPV4(IP2);
+					VLSM2:
+						system("cls");
+						generate_HostNumbers();
+						print_task_VLSM();
+						std::cin.get();
+						std::cout << "1) get new Task with same IP Address\n";
+						std::cout << "2) Go Back\n";
+						int h = 0;
+						std::cin >> h;
+						if (h == 1) {
+							goto VLSM2;
+						}
+						else
+						{
+							goto VLSM;
+						}
+						
+					}
+					if (k == 3) {
+						std::string IP2 = "";
+						std::cout << "Input IP: ";
+						std::cin >> IP2;
+						std::cin.ignore();
+						int sub = 0;
+						std::cout <<  "Input desired Subnet Mask in '\\notations' (without \\ symbol): ";
+						std::cin >> sub;
+					VLSM3:
+						update_IPV4(IP2);
+						this->Subnet_mask.set_Subnet(sub);
+						print_task_VLSM();
+						std::cin.get();
+						std::cout << "1) get new Task with same IP Address\n";
+						std::cout << "2) Go Back\n";
+						int h = 0;
+						std::cin >> h;
+						if (h == 1) {
+							goto VLSM3;
+						}
+						else
+						{
+							goto VLSM;
+						}
+					}
+					if (k == 4) {
+						system("cls");
+						goto menu;
+					}
+					else {
+						std::cout << "invalid Input\n";
+						std::cout << "Press Enter to go Back\n";
+						std::cin.get();
+						std::cin.get();
+						goto VLSM;
+					}
+				}
+				if (l == 4) {
+					system("cls");
+					goto menu;
+				}
+				else
+				{
+					std::cout << "invalid Input\n";
+					std::cout << "Press Enter to go Back\n";
+					std::cin.get();
+					std::cin.get();
+					goto Ipv4;
+				}
+			}
+			else if (i == 2) {
+			Ipv6:
+				system("cls");
+				std::cout << "*************************************************************************************\n";
+				std::cout << "                  Subnettingquestions-solver  by Nilusche Liyanaarachchi  (c)        \n";
+				std::cout << "*************************************************************************************\n";
+				std::cout << "IP VERSION 6 Menu (Additional Functions coming soon)\n\n";
+				std::cout << "1) Input IPV6 IP\n";
+				std::cout << "2) Convert IPV4 Address to IPV6 (6to4 Rule)\n";
+				std::cout << "3) Go Back to Main Menu\n";
+				int l = 0;
+				std::cin >> l;
+				if (l == 1) {
+					std::string IP = "";
+					std::cout << "Input IP in this Format: 'XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX'\n";
+					std::cout << "Abbreviation with '::' are allowed, others are not.\n";
+					std::cout << "Valid Example: ABCD:ABCD:ABCD:ABCD:ABCD:ABCD:ABCD\n";
+					std::cout << "Valid Example: ABCD:EFAB::ABCD:EFAB\n";
+					std::cout << "Invalid Example: AB:CDE:ABC::\n";
+					std::cout << "IP: ";
+					std::cin >> IP;
+					IPV6 Ip(IP);
+					Ip.printAdd();
+					std::cin.get();
+					std::cin.get();
+					goto Ipv6;
+				}
+				if (l == 2) {
+					std::string IP = "";
+					std::cout << "Input IP: ";
+					std::cin >> IP;
+					IPV4 Ip(IP);
+					Ip.printAdd();
+					this->IPv6.convert6to4(Ip);
+					print_IPV6();
+					std::cin.get();
+					std::cin.get();
+					goto Ipv6;
+				}
+				if (l == 3) {
+					system("cls");
+					goto menu;
+				}
+				else
+				{
+					std::cout << "invalid Input\n";
+					std::cout << "Press Enter to go Back\n";
+					std::cin.get();
+					std::cin.get();
+					goto Ipv6;
+				}
+			}
+			else {
+				break;
+			}
+		}
+		
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	catch (...) {
+		std::cout << "Something went wrong. Restart Again" << std::endl;
+	}
+
+
 }
 
 void IPAdressManagement::update_IPV4(std::string IP) {
@@ -41,11 +306,20 @@ void IPAdressManagement::update_IPV6(std::string IP) {
 	IPv4.init_IP(IP);
 }
 
+void IPAdressManagement::randomize_Subnet() {
+	int r = 20 + rand() % (30 - 19 + 1);
+	Subnet_mask.set_Subnet(r);
+}
+
 void IPAdressManagement::randomize_IPV4() {
 	IPv4.randomize();
 }
 void IPAdressManagement::randomize_IPV6() {
 	IPv6.randomize();
+}
+
+void IPAdressManagement::print_Sub() {
+	Subnet_mask.print_Subnet();
 }
 
 void IPAdressManagement::determine_subnet_IPV4(){
@@ -60,7 +334,7 @@ void IPAdressManagement::determine_subnet_IPV4(){
 	table.insert({ 255,1 });
 
 
-	std::cout << "find Subnetadress of: ...\n";
+	std::cout << "find Subnetaddress of: ...\n";
 	IPv4.printAdd();
 	Subnet_mask.print_Subnet();
 	std::cout << "\n";
@@ -112,14 +386,19 @@ void IPAdressManagement::determine_subnet_IPV4(){
 			counter -= subVal;
 			
 			std::string IPnew = "";
+			bool last_octett = false;
 			for (auto i = 0; i < seglist2.size();i++) {
 				if (i == octettposition) {
+					last_octett = true;
 					IPnew += std::to_string(counter);
 					if (i + 1 != seglist2.size())
 						IPnew += ".";
 					continue;
 				}
-				IPnew += std::to_string(seglist2[i]);
+				if (!last_octett)
+					IPnew += std::to_string(seglist2[i]);
+				else
+					IPnew += std::to_string(0);
 				if (i + 1 != seglist2.size())
 					IPnew+= ".";
 

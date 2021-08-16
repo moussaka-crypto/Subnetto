@@ -38,7 +38,7 @@ std::string Mask::Subnet_To_Binary(){
 
 
 void Mask::print_Subnet() {
-	std::cout << "Mask Bin " << Subnet_To_Binary() << "\t" << convert_to_dec() << std::endl;
+	std::cout << "Mask Bin " << Subnet_To_Binary() << "\t" << convert_to_dec() << "\t\\"<<slash<<std::endl;
 }
 
 void Mask::set_subnet_string() {

@@ -12,7 +12,7 @@ void Hosts::read_Hosts() {
 		int num_of_Host = 0;
 		std::cout << "Hostname: "; std::cin >> Hostname; std::cin.ignore();
 		std::cout << "Supported number of hosts: "; std::cin >> num_of_Host; std::cin.ignore();
-		HostSet.insert({ Hostname, num_of_Host });
+		HostSet.insert({num_of_Host,Hostname });
 	}
 
 	std::cout << "Input was succesfull" << std::endl;
@@ -30,7 +30,7 @@ void Hosts::generate_Hosts(int Num_of_Hosts, int mask) {
 		maximum_number_of_Hosts -= num_of_Host;
 		if (maximum_number_of_Hosts <= 0)
 			break;
-		HostSet.insert({ Hostname, num_of_Host });
+		HostSet.insert({ num_of_Host,Hostname});
 	}
 }
 
@@ -38,7 +38,7 @@ void Hosts::print_Hosts() {
 
 	VariadicTable<std::string, int> vt({ "Hostname", "Number of Hosts" });
 	for (auto it = HostSet.begin(); it != HostSet.end(); it++) {
-		vt.addRow(it->first, it->second);
+		vt.addRow(it->second, it->first);
 	}
 	vt.print(std::cout);
 	

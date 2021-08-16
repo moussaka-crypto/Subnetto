@@ -24,6 +24,7 @@
     <ClInclude Include="IPAdress.h" />
     <ClInclude Include="Mask.h" />
     <ClInclude Include="Utility.h" />
+    <ClInclude Include="VariadicTable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Hosts.cpp" />

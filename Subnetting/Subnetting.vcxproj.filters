@@ -30,6 +30,9 @@
     <ClInclude Include="Hosts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VariadicTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Mask.cpp">

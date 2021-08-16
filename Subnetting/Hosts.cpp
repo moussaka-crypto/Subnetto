@@ -1,7 +1,7 @@
 #include "Hosts.h"
 #include <iomanip>
 #include <string>
-
+#include "VariadicTable.h"
 void Hosts::read_Hosts() {
 	int n;
 	std::cout << "Input number of Hosts: ...\n";
@@ -30,6 +30,10 @@ void Hosts::generate_Hosts(int Num_of_Hosts, int mask) {
 
 void Hosts::print_Hosts() {
 
+	VariadicTable<std::string, int> vt({ "Hostname", "Number of Hosts" });
+	for (auto it = HostSet.begin(); it != HostSet.end(); it++) {
+		vt.addRow(it->first, it->second);
+	}
+	vt.print(std::cout);
 	
-		
 }

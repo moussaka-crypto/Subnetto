@@ -18,3 +18,8 @@ Can you use this freely?
 Yeah feel free to play around with the code. Drop me a line if you find it useful.
 
 Nilusche Liyanaarachchi (c)
+
+
+![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM.png?raw=true)
+![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM2.png?raw=true)
+![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/IPV6.png?raw=true)

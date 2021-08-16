@@ -1,4 +1,4 @@
-# Subnetting-Solver
+# Subnetting-Solver in C++
 
 
 This is a simple Subnettingquestions-Solver implemented in C++ as my first project.

@@ -6,30 +6,40 @@
 
 class IPAdressManagement {
 private:
-	IPAdress IP;
+	IPV4 IPv4;
+	IPV6 IPv6;
 	Mask Subnet_mask;
-	bool IPversion; //true == IPV4, false== IPV6
 	Hosts hosts;
 	//void initiate_IPV(int Version);
 	//bool validate();
 public: 
 	IPAdressManagement(const IPAdressManagement &orig) {
-		this->IP = orig.IP;
+		this->IPv4 = orig.IPv4;
+		this->IPv6 = orig.IPv6;
 		this->Subnet_mask = orig.Subnet_mask;
+		this->IPv4 = orig.IPv4;
+		this->hosts = orig.hosts;
 	}
-	IPAdressManagement& operator=(const IPAdressManagement& IP_M) {
-		this->IP = IP_M.IP;
-		this->Subnet_mask = IP_M.Subnet_mask;
+	IPAdressManagement& operator=(const IPAdressManagement& orig) {
+		this->IPv4 = orig.IPv4;
+		this->IPv6 = orig.IPv6;
+		this->Subnet_mask = orig.Subnet_mask;
+		this->IPv4 = orig.IPv4;
+		this->hosts = orig.hosts;
 		return *this;
 	}
-	IPAdressManagement(IPAdress IP, Mask Subnet_mask, bool IPversion) : IP{ IP }, Subnet_mask{ Subnet_mask }, IPversion{ IPversion }{}
-
-
-	void get_HostNumbers() {
-
-	}
-
-
+	IPAdressManagement(IPV4 IPv4, Mask Subnet_mask, bool IPversion) : IPv4{ IPv4 }, Subnet_mask{ Subnet_mask }{}
+	IPAdressManagement(std::string IP, int subnet, int version);
+	void randomize_IPV4();
+	void randomize_IPV6();
+	void update_IPV4(std::string IP);
+	void update_IPV6(std::string IP);
+	void read_hostNumbers();
+	void generate_HostNumbers();
+	void print_IPV4();
+	void print_IPV6();
+	void print_task_VLSM();
+	void determine_subnet_IPV4();
 	
 };
 

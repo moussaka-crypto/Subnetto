@@ -4,11 +4,9 @@
 int main() {
 	srand(time(NULL));
 
-	
-
-	Hosts host;
-	host.generate_Hosts(5, 24);
-	host.print_Hosts();
-
+	IPAdressManagement Ipv4Problem("198.168.1.130", 25, 4);
+	Ipv4Problem.determine_subnet_IPV4();
+	/*Ipv4Problem.generate_HostNumbers();
+	Ipv4Problem.print_task_VLSM();*/
 	return 0;
 }

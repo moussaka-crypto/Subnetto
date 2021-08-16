@@ -11,7 +11,8 @@ IPAdress& IPAdress::operator=(const IPAdress& orig) {
 
 
 void IPV4::init_IP(std::string Ip) {
-	
+	Add.clear();
+	Add.assign(32, 0);
 	std::stringstream pars(Ip);
 	std::string segment;
 	std::vector <int> seglist;
@@ -140,4 +141,23 @@ void IPV6::printAdd() {
 }
 
 
+void IPV4::randomize() {
+	Add.clear();
+	Add.assign(32, 0); 
+	int octett1 = rand() % (192 - 0 + 1);
+	int octett2 = rand() % (192 - 0 + 1);
+	int octett3 = rand() % (192 - 0 + 1);
+	int octett4 = rand() % (192 - 0 + 1);
+	std::string ip;
+	ip += std::to_string(octett1) + "." + std::to_string(octett2) + "." + std::to_string(octett3) + "."+ std::to_string(octett4);
+	init_IP(ip);
+}
 
+
+std::string IPV4::get_IP() {
+	return toStringAddDecimal();
+}
+
+std::string IPV6::get_IP() {
+	return toStringAddHex();
+}

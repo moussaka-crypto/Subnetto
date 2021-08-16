@@ -26,9 +26,10 @@ public:
 	std::vector<int> getAdd()const { return Add; }
 	virtual void init_IP(std::string Ip) {};
 	virtual void printAdd();
+	virtual void randomize(){ }
 	std::string toStringAddBinary();
 	void dumpAdress() { Add.clear(); }
-
+	
 };
 
 class IPV4 :public IPAdress {
@@ -37,12 +38,13 @@ private:
 public:
 	void init_IP(std::string Ip)override;
 	void printAdd()override;
+	void randomize()override;
 	IPV4() { Add.assign(32, 0); }
 	IPV4(std::string IP) { 
 		Add.assign(32, 0);
 		init_IP(IP); 
 	}
-
+	std::string get_IP();
 };
 
 class IPV6 :public IPAdress {
@@ -51,13 +53,13 @@ private:
 public:
 	void init_IP(std::string Ip)override;
 	void printAdd()override;
-	
 	IPV6(IPV4 ipv4) { convert6to4(ipv4); }
 	IPV6() { Add.assign(112, 0); }
 	IPV6(std::string IP) { 
 		Add.assign(112, 0);
 		init_IP(IP); 
 	}
+	std::string get_IP();
 	
 };
 

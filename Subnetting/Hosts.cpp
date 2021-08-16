@@ -19,11 +19,17 @@ void Hosts::read_Hosts() {
 }
 
 void Hosts::generate_Hosts(int Num_of_Hosts, int mask) {
-	int maximum_number_of_Hosts = pow(2, (32 - mask));
+	int maximum_number_of_Hosts = pow(2, (32 - mask))+1;
 	for (int i = 0; i < Num_of_Hosts; i++) {
 		std::string Hostname = "Host ";
 		Hostname += std::to_string(i);
-		int num_of_Host = 25 + (std::rand() % (maximum_number_of_Hosts - 2 + 1));
+		int range = maximum_number_of_Hosts - 2 + 1;
+		if (range == 0)
+			break;
+		int num_of_Host = 2 + (std::rand() % (range));
+		maximum_number_of_Hosts -= num_of_Host;
+		if (maximum_number_of_Hosts <= 0)
+			break;
 		HostSet.insert({ Hostname, num_of_Host });
 	}
 }

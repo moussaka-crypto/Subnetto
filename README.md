@@ -21,5 +21,20 @@ Nilusche Liyanaarachchi (c)
 
 
 ![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM.png?raw=true)
+
+
+---------------------------------------------------------------------------------------
+
+
 ![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM2.png?raw=true)
+
+
+---------------------------------------------------------------------------------------
+
+
 ![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/IPV6.png?raw=true)
+
+
+---------------------------------------------------------------------------------------
+
+

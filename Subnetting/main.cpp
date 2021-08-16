@@ -3,15 +3,12 @@
 
 int main() {
 	srand(time(NULL));
-	IPV4 ip;
-	ip.init_IP("224.92.17.31");
-	ip.printAdd();
-	IPV6 ip2;
-	ip2.init_IP("0001::");
-	ip2.printAdd();
 
+	
 
-
+	Hosts host;
+	host.generate_Hosts(5, 24);
+	host.print_Hosts();
 
 	return 0;
 }

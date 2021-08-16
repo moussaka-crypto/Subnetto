@@ -21,15 +21,18 @@
     <ClInclude Include="IPAdress.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MaskContainer.h">
+    <ClInclude Include="Mask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Hosts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MaskContainer.cpp">
+    <ClCompile Include="Mask.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -39,6 +42,9 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Utility.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hosts.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>

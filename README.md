@@ -17,7 +17,7 @@ Currently it can support:
 Can you use this freely? 
 Yes feel free to play around with the code. Drop me a line if you find it useful.
 
-Nilusche Liyanaarachchi (c)
+
 
 
 ![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM.png?raw=true)

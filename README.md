@@ -15,7 +15,7 @@ Currently it can support:
        
 
 Can you use this freely? 
-Yeah feel free to play around with the code. Drop me a line if you find it useful.
+Yes feel free to play around with the code. Drop me a line if you find it useful.
 
 Nilusche Liyanaarachchi (c)
 

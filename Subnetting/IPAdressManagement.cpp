@@ -44,7 +44,7 @@ void IPAdressManagement::print_task_VLSM() {
 	std::vector<int> broadCastAdress = IP;
 	std::vector<int> lastIP = IP;
 	std::vector<int> firstIP = IP;
-	VariadicTable<std::string,std::string, std::string, std::string, std::string> vt({ "HostName","Network Address", "First IP", "Last IP","BroadcastAdress"});
+	VariadicTable<std::string,std::string, std::string, std::string, std::string,std::string> vt({ "Hostname","Network Address", "First IP", "Last IP","Broadcast Address", "Subnetmask"});
 	for (auto it = hosts.HostSet.rbegin(); it != hosts.HostSet.rend(); it++) {
 		int host = nearest_binary_base_hosts(it->first);
 		std::fill(networkAdress.rbegin(), networkAdress.rbegin() + host, 0);
@@ -58,7 +58,8 @@ void IPAdressManagement::print_task_VLSM() {
 		std::string broad = IPV4(broadCastAdress).get_IP();
 		std::string first = IPV4(firstIP).get_IP();
 		std::string last = IPV4(lastIP).get_IP();
-		vt.addRow(it->second, netWork, first, last, broad);
+		std::string sub = "\\"+std::to_string(32 - host);
+		vt.addRow(it->second, netWork, first, last, broad,sub);
 
 		IP = broadCastAdress;
 		

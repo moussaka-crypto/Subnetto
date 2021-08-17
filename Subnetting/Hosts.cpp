@@ -3,6 +3,7 @@
 #include <string>
 #include "VariadicTable.h"
 void Hosts::read_Hosts() {
+	HostSet.clear();
 	int n;
 	std::cout << "Input number of Hosts: ...\n";
 	std::cin >> n;
@@ -19,6 +20,7 @@ void Hosts::read_Hosts() {
 }
 
 void Hosts::generate_Hosts(int Num_of_Hosts, int mask) {
+	HostSet.clear();
 	int maximum_number_of_Hosts = pow(2, (32 - mask))+1;
 	for (int i = 0; i < Num_of_Hosts; i++) {
 		std::string Hostname = "Host ";

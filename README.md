@@ -6,7 +6,7 @@ This is a simple Subnettingquestions-Solver implemented in C++.
 
 Currently it can support:
 
-- Converting IP version 4 Adresses to IP version 6 Adresses
+- Converting IP version 4 Adresses to IPV6 Adresses
 - Determination of the Subnet of given IPV4 Address
 - VLSM Subnetting Questions:
       

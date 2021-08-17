@@ -1,7 +1,7 @@
 # Subnetting-Solver in C++
 
 
-This is a simple Subnettingquestions-Solver implemented in C++ as my first project.
+This is a simple Subnettingquestions-Solver implemented in C++ as one of my first projects.
 (Will get Updates).
 
 Currently it can support:
@@ -18,3 +18,23 @@ Can you use this freely?
 Yeah feel free to play around with the code. Drop me a line if you find it useful.
 
 Nilusche Liyanaarachchi (c)
+
+
+![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM.png?raw=true)
+
+
+---------------------------------------------------------------------------------------
+
+
+![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM2.png?raw=true)
+
+
+---------------------------------------------------------------------------------------
+
+
+![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/IPV6.png?raw=true)
+
+
+---------------------------------------------------------------------------------------
+
+

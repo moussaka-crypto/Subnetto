@@ -5,7 +5,7 @@
 void Hosts::read_Hosts() {
 	HostSet.clear();
 	int n;
-	std::cout << "Input number of Organisations/Subnets: ...\n";
+	std::cout << "Input number of Organisations/Subnets: ...";
 	std::cin >> n;
 	std::cin.ignore();
 	for (int i = 0; i < n; i++) {

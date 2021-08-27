@@ -33,7 +33,7 @@ Yes feel free to play around with the code. Drop me a line if you find it useful
 ---------------------------------------------------------------------------------------
 
 
-![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/sub.png?raw=true)
+![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/Sub.png?raw=true)
 
 
 ---------------------------------------------------------------------------------------

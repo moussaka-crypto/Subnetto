@@ -7,7 +7,7 @@ This is a simple Subnettingquestions-Solver implemented in C++.
 Currently it can support:
 
 - Converting IP version 4 Adresses to IPV6 Adresses
-- Identifying the Addressrange of given IPV6 Address to a given subnetmask
+- Identifying the Addressrange of an IPV6 or IPV4 Address to a given subnetmask
 - Determination of the Subnet of given IPV4 Address
 - VLSM Subnetting Questions:
       

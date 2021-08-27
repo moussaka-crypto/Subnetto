@@ -56,9 +56,9 @@ public:
 	void init_IP(std::string Ip)override;
 	void printAdd()override;
 	IPV6(IPV4 ipv4) { convert6to4(ipv4); }
-	IPV6() { Add.assign(112, 0); }
+	IPV6() { Add.assign(128, 0); }
 	IPV6(std::string IP) { 
-		Add.assign(112, 0);
+		Add.assign(128, 0);
 		init_IP(IP); 
 	}
 	IPV6(std::vector<int> ip) { this->Add = ip; }

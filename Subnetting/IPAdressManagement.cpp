@@ -80,17 +80,40 @@ void IPAdressManagement::print_task_VLSM() {
 	vt.print(std::cout);
 	
 }
+void IPAdressManagement::create_subnets_question() {
+	print_IPV4();
+	print_Sub();
+	std::vector<int> IP = IPv4.getAdd();
+	int sub = Subnet_mask.get_slash();
+
+
+	int hosts = pow(2, (32 - sub));
+	int r = (hosts / 10) + (rand() % (hosts/4 - (hosts /10) + 1));
+
+	std::cout << "First Determine the subnet of this IP Adress.\nThen create as many Subnets as possible to support " << r <<" Hosts"<< std::endl;
+	std::vector<int> network = IP;
+	int binary = nearest_binary_base_hosts(r);
+	std::fill(network.rbegin(), network.rbegin() + binary-1, 0);
+	int end = 32 - sub - binary + 1;
+	std::vector<int> s(IP.begin() + sub, IP.begin() + sub + end-1);
+	for (auto i : s){
+		std::cout << i;
+	}
+	std::cout << std::endl;
+	
+	
+}
+
+
 
 void IPAdressManagement::clientProgramm() {
 	try {
-		std::cout << "*************************************************************************************\n";
-		std::cout << "                  Subnettingquestionsolver  by Nilusche Liyanaarachchi  (c)          \n";
-		std::cout << "*************************************************************************************\n";
-
 		while (true)
 		{
 		menu:
-
+			std::cout << "*************************************************************************************\n";
+			std::cout << "                  Subnettingquestionsolver  by Nilusche Liyanaarachchi  (c)          \n";
+			std::cout << "*************************************************************************************\n";
 			std::cout << "Main Menu\n\n";
 			std::cout << "1) Work with IP Version 4\n";
 			std::cout << "2) Work with IP Version 6\n";
@@ -113,6 +136,7 @@ void IPAdressManagement::clientProgramm() {
 				std::cin >> l;
 
 				if (l == 1) {
+					
 					std::string IP = "";
 					std::cout << "IP: ";
 					std::cin>>IP;
@@ -188,7 +212,7 @@ void IPAdressManagement::clientProgramm() {
 						std::cin >> IP2;
 						std::cin.ignore();
 						int sub = 0;
-						std::cout <<  "Input desired Subnet Mask in '\\notations' (without \\ symbol): ";
+						std::cout <<  "Input desired Subnetmask in CIDR Notation (without \\ symbol): ";
 						std::cin >> sub;
 						this->read_hostNumbers();
 						
@@ -248,7 +272,8 @@ void IPAdressManagement::clientProgramm() {
 				std::cout << "IP VERSION 6 Menu (Additional Functions coming soon)\n\n";
 				std::cout << "1) Input IPV6 IP\n";
 				std::cout << "2) Convert IPV4 Address to IPV6 (6to4 Rule)\n";
-				std::cout << "3) Go Back to Main Menu\n";
+				std::cout << "3) Identify the addressrange of an IPV6 address to a given subnetmask\n";
+				std::cout << "4) Go Back to Main Menu\n";
 				int l = 0;
 				std::cin >> l;
 				if (l == 1) {
@@ -257,11 +282,12 @@ void IPAdressManagement::clientProgramm() {
 					std::cout << "Abbreviation with '::' are allowed, others are not.\n";
 					std::cout << "Valid Example: ABCD:ABCD:ABCD:ABCD:ABCD:ABCD:ABCD\n";
 					std::cout << "Valid Example: ABCD:EFAB::ABCD:EFAB\n";
-					std::cout << "Invalid Example: AB:CDE:ABC::\n";
+					std::cout << "Invalid Example: AB:CDE:ABC::\n\n";
 					std::cout << "IP: ";
 					std::cin >> IP;
 					IPV6 Ip(IP);
 					Ip.printAdd();
+					update_IPV6(IP);
 					std::cin.get();
 					std::cin.get();
 					goto Ipv6;
@@ -279,6 +305,13 @@ void IPAdressManagement::clientProgramm() {
 					goto Ipv6;
 				}
 				if (l == 3) {
+					range_of_IPV6();
+					std::cout << "Press Enter to continue\n";
+					std::cin.get();
+					std::cin.get();
+					goto Ipv6;
+				}
+				if (l == 4) {
 					system("cls");
 					goto menu;
 				}
@@ -311,7 +344,7 @@ void IPAdressManagement::update_IPV4(std::string IP) {
 	IPv4.init_IP(IP);
 }
 void IPAdressManagement::update_IPV6(std::string IP) {
-	IPv4.init_IP(IP);
+	IPv6.init_IP(IP);
 }
 
 void IPAdressManagement::randomize_Subnet() {
@@ -418,6 +451,69 @@ void IPAdressManagement::determine_subnet_IPV4(){
 			break;
 		}
 	}
+}
 
+void IPAdressManagement::range_of_IPV6() {
+	std::cout << "Make sure to Input the IP Adress before continueing.\n";
+	std::cout << "1) Input IPV6 Address\n";
+	std::cout << "2) Continue with saved Addressed\n";
+	std::cout << "3) Abort process\n";
+	
+	int i = 0;
+	std::cin >> i;
+	if (i == 1) {
+		std::string IP;
+		std::cout << "Input IP in this Format: 'XXXX:XXXX:XXXX:XXXX:XXXX:XXXX:XXXX'\n";
+		std::cout << "Abbreviation with '::' are allowed, others are not.\n";
+		std::cout << "Valid Example: ABCD:ABCD:ABCD:ABCD:ABCD:ABCD:ABCD\n";
+		std::cout << "Valid Example: ABCD:EFAB::ABCD:EFAB\n";
+		std::cout << "Invalid Example: AB:CDE:ABC::\n\n";
+		std::cout << "IP: ";
+		std::cin >> IP;
+		update_IPV6(IP);
+		IPv6.printAdd();
+	}
+	else if (i == 2) {
+		IPv6.printAdd();
+	}
+	else {
+		return;
+	}
 
+	std::cout << "Input desired Subnetmask in CIDR Notation (without '/' symbol): ";
+	int s = 0;
+	std::cin >> s;
+	while ((s < 1 || s>128)) {
+		std::cout << "Invalid Mask.\nMask: ";
+		int tmp = 0;
+		std::cin >> tmp;
+		s = tmp;
+		std::cin.ignore();
+	}
+	std::cout << "Entered Mask: /" << s << std::endl;
+
+	std::vector<int> ip6 = IPv6.getAdd();
+	std::vector<int> network_add(ip6.begin(), ip6.begin() + s);
+	VariadicTable<std::string> vt1({ "Networkaddress"});
+	VariadicTable<std::string> vt2({ "First IP"});
+	VariadicTable<std::string> vt3({ "Last IP"});
+	VariadicTable<std::string> vt4({ "Broadcastaddress"});
+	std::fill(ip6.begin()+s, ip6.end(), 0);
+	IPV6 net(ip6);
+	auto it = ip6.end() - 1;
+	*it = 1;
+	IPV6 first(ip6);
+	std::fill(ip6.begin() + s, ip6.end(),1);
+	IPV6 broad(ip6);
+	*it = 0;
+	IPV6 last(ip6);
+
+	vt1.addRow(net.get_IP());
+	vt2.addRow(first.get_IP());
+	vt3.addRow(last.get_IP());
+	vt4.addRow(broad.get_IP());
+	vt1.print(std::cout);
+	vt2.print(std::cout);
+	vt3.print(std::cout);
+	vt4.print(std::cout);
 }

@@ -46,7 +46,7 @@ void IPV4::init_IP(std::string Ip) {
 
 void IPV6::init_IP(std::string Ip) {
 	Add.clear();
-	Add.assign(112, 0);
+	Add.assign(128, 0);
 	int pos = 0, increment = 0;
 	std::string target = "::";
 

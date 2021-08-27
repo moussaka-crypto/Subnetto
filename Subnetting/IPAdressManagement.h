@@ -43,6 +43,7 @@ public:
 	void determine_subnet_IPV4();
 	void create_subnets_question();
 	void range_of_IPV6();
+	void range_of_IPV4();
 	void clientProgramm();
 	void print_Sub();
 };

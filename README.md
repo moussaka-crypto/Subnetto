@@ -1,12 +1,12 @@
 # Subnetting-Solver in C++
 
 
-This is a simple Subnettingquestions-Solver implemented in C++ as one of my first projects.
+This is a simple Subnettingquestions-Solver implemented in C++.
 (Will get Updates).
 
 Currently it can support:
 
-- Converting IP version 4 Adresses to IP version 6 Adresses
+- Converting IP version 4 Adresses to IPV6 Adresses
 - Determination of the Subnet of given IPV4 Address
 - VLSM Subnetting Questions:
       
@@ -15,9 +15,9 @@ Currently it can support:
        
 
 Can you use this freely? 
-Yeah feel free to play around with the code. Drop me a line if you find it useful.
+Yes feel free to play around with the code. Drop me a line if you find it useful.
 
-Nilusche Liyanaarachchi (c)
+
 
 
 ![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM.png?raw=true)

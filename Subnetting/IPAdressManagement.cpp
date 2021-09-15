@@ -128,9 +128,9 @@ void IPAdressManagement::clientProgramm() {
 				std::cout << "                  Subnettingquestions-solver  by Nilusche Liyanaarachchi  (c)        \n";
 				std::cout << "*************************************************************************************\n";
 				std::cout << "IP VERSION 4 Menu\n\n";
-				std::cout << "1) Input IP Version 4 IP Adress\n";
+				std::cout << "1) Input IP Version 4 IP address\n";
 				std::cout << "2) Identify the addressrange of an IPV4 address to a given subnetmask\n";
-				std::cout << "3) Determine the subnet of given IP adress\n";
+				std::cout << "3) Determine the subnet of given IP address\n";
 				std::cout << "4) VLSM Subnetting Question and Solver\n";
 				std::cout << "5) Go Back to Menu\n\n";
 				int l = 0;
@@ -279,7 +279,7 @@ void IPAdressManagement::clientProgramm() {
 				std::cout << "*************************************************************************************\n";
 				std::cout << "IP VERSION 6 Menu (Additional Functions coming soon)\n\n";
 				std::cout << "1) Input IPV6 IP\n";
-				std::cout << "2) Convert IPV4 Address to IPV6 (6to4 Rule)\n";
+				std::cout << "2) Convert IPV4 address to IPV6 (6to4 Rule)\n";
 				std::cout << "3) Identify the addressrange of an IPV6 address to a given subnetmask\n";
 				std::cout << "4) Go Back to Main Menu\n";
 				int l = 0;

@@ -129,7 +129,7 @@ void IPAdressManagement::clientProgramm() {
 				std::cout << "*************************************************************************************\n";
 				std::cout << "IP VERSION 4 Menu\n\n";
 				std::cout << "1) Input IP Version 4 IP Adress\n";
-				std::cout << "2) Identify the addressrange of an IPV4 address to a given subnetmask";
+				std::cout << "2) Identify the addressrange of an IPV4 address to a given subnetmask\n";
 				std::cout << "3) Determine the subnet of given IP adress\n";
 				std::cout << "4) VLSM Subnetting Question and Solver\n";
 				std::cout << "5) Go Back to Menu\n\n";

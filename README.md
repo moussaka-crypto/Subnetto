@@ -2,7 +2,6 @@
 
 
 This is a simple Subnettingquestions-Solver implemented in C++.
-(Will get Updates).
 
 Currently it can support:
 

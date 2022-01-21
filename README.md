@@ -1,7 +1,7 @@
 # Subnetting-Solver in C++
 
 
-This is a simple Subnettingquestions-Solver implemented in C++.
+This is a Subnettingquestions-Solver implemented in C++.
 
 Currently it can support:
 

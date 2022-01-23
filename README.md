@@ -11,7 +11,7 @@ Currently it can support:
 - VLSM Subnetting Questions:
       
       - Generate VLSM subnetting szenarios (variable hosts and addresses or custom ones)
-      - Solve VLSM Subnetting Szenerios  (customs ones and generated ones)
+      - Solve VLSM Subnetting Szenerios  (custom ones and generated ones)
        
 
 Feel free to play around with the code. Drop me a line if you find it useful.

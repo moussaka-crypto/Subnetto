@@ -14,8 +14,7 @@ Currently it can support:
       - Solve VLSM Subnetting Szenerios  (customs ones and generated ones)
        
 
-Can you use this freely? 
-Yes feel free to play around with the code. Drop me a line if you find it useful.
+Feel free to play around with the code. Drop me a line if you find it useful.
 
 
 

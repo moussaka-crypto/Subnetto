@@ -112,7 +112,7 @@ void IPAdressManagement::clientProgramm() {
 		{
 		menu:
 			std::cout << "*************************************************************************************\n";
-			std::cout << "                  Subnettingquestionsolver  by Nilusche Liyanaarachchi  (c)          \n";
+			std::cout << "				      SUBNETTO  by Nilusche Liyanaarachchi  (c)					       \n";
 			std::cout << "*************************************************************************************\n";
 			std::cout << "Main Menu\n\n";
 			std::cout << "1) Work with IP Version 4\n";

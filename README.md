@@ -17,19 +17,19 @@ Feel free to play around with the code. Drop me a line if you find it useful.
 
 
 Thanks to https://github.com/friedmud for the Table-template!
-![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM.png?raw=true)
+![alt text](https://github.com/moussaka-crypto/Subnetto/blob/master/VLSM.png?raw=true)
 
 
 ---------------------------------------------------------------------------------------
 
 
-![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/VLSM2.png?raw=true)
+![alt text](https://github.com/moussaka-crypto/Subnetto/blob/master/VLSM2.png?raw=true)
 
 
 ---------------------------------------------------------------------------------------
 
 
-![alt text](https://github.com/Nilusche/Subnetting-Solver/blob/master/Sub.png?raw=true)
+![alt text](https://github.com/moussaka-crypto/Subnetto/blob/master/Sub.png?raw=true)
 
 
 ---------------------------------------------------------------------------------------

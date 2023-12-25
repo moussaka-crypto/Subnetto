@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <string>
 #include "VariadicTable.h"
+
 void Hosts::read_Hosts() {
 	HostSet.clear();
 	int n;
@@ -16,10 +17,11 @@ void Hosts::read_Hosts() {
 		HostSet.insert({num_of_Host,Hostname });
 	}
 
-	std::cout << "Input was succesfull" << std::endl;
+	std::cout << "Input was successful." << std::endl;
 }
 
 void Hosts::generate_Hosts(int Num_of_Hosts, int mask) {
+
 	HostSet.clear();
 	int maximum_number_of_Hosts = pow(2, (32 - mask))+1;
 	for (int i = 0; i < Num_of_Hosts; i++) {
@@ -43,5 +45,4 @@ void Hosts::print_Hosts() {
 		vt.addRow(it->second, it->first);
 	}
 	vt.print(std::cout);
-	
 }

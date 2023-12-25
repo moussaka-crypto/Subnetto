@@ -1,7 +1,8 @@
 #ifndef _UTILITY_H
 #define _UTILITY_H
-#include<vector>
+#include <vector>
 #include <sstream>
+#include <cctype>
 
 std::vector<int> decToBinary(int n);
 int binaryToDecimal(int n);
@@ -15,4 +16,3 @@ int nearest_binary_base_subnets(int num);
 int nearest_binary_base_hosts(int num);
 
 #endif
-

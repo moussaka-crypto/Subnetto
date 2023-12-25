@@ -4,14 +4,14 @@
 #include "Mask.h"
 #include "Hosts.h"
 #include "Utility.h"
+
 class IPAdressManagement {
 private:
 	IPV4 IPv4;
 	IPV6 IPv6;
 	Mask Subnet_mask;
 	Hosts hosts;
-	//void initiate_IPV(int Version);
-	//bool validate();
+
 public: 
 	IPAdressManagement(const IPAdressManagement &orig) {
 		this->IPv4 = orig.IPv4;

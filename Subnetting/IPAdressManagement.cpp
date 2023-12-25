@@ -2,9 +2,10 @@
 #include <sstream>
 #include "VariadicTable.h"
 #include <string>
+
 IPAdressManagement::IPAdressManagement (std::string IP, int subnet, int version) {
 	if (version != 4 && version != 6)
-		throw std::invalid_argument("Wrong IP Version entered");
+		throw std::invalid_argument("Wrong IP Version.");
 	if (version == 4) {
 		IPv4.init_IP(IP);
 		Subnet_mask.set_Subnet(subnet);
@@ -90,7 +91,7 @@ void IPAdressManagement::create_subnets_question() {
 	int hosts = pow(2, (32 - sub));
 	int r = (hosts / 10) + (rand() % (hosts/4 - (hosts /10) + 1));
 
-	std::cout << "First Determine the subnet of this IP Adress.\nThen create as many Subnets as possible to support " << r <<" Hosts"<< std::endl;
+	std::cout << "First determine the subnet of this IP Adress.\nThen create as many Subnets as possible to support " << r <<" Hosts"<< std::endl;
 	std::vector<int> network = IP;
 	int binary = nearest_binary_base_hosts(r);
 	std::fill(network.rbegin(), network.rbegin() + binary-1, 0);
@@ -101,10 +102,7 @@ void IPAdressManagement::create_subnets_question() {
 	}
 	std::cout << std::endl;
 	
-	
 }
-
-
 
 void IPAdressManagement::clientProgramm() {
 	try {
@@ -125,11 +123,11 @@ void IPAdressManagement::clientProgramm() {
 			Ipv4:
 				system("cls");
 				std::cout << "*************************************************************************************\n";
-				std::cout << "                  Subnettingquestions-solver  by Nilusche Liyanaarachchi  (c)        \n";
+				std::cout << "                  SUBNETTO  by Nilusche Liyanaarachchi  (c)					       \n";
 				std::cout << "*************************************************************************************\n";
 				std::cout << "IP VERSION 4 Menu\n\n";
 				std::cout << "1) Input IP Version 4 IP address\n";
-				std::cout << "2) Identify the addressrange of an IPV4 address to a given subnetmask\n";
+				std::cout << "2) Identify the address range of an IPV4 address to a given subnetmask\n";
 				std::cout << "3) Determine the subnet of given IP address\n";
 				std::cout << "4) VLSM Subnetting Question and Solver\n";
 				std::cout << "5) Go Back to Menu\n\n";
@@ -172,7 +170,7 @@ void IPAdressManagement::clientProgramm() {
 				VLSM:
 					system("cls");
 					std::cout << "*************************************************************************************\n";
-					std::cout << "                  Subnettingquestions-solver  by Nilusche Liyanaarachchi  (c)        \n";
+					std::cout << "                  SUBNETTO  by Nilusche Liyanaarachchi  (c)					       \n";
 					std::cout << "*************************************************************************************\n";
 					std::cout << "VLSM Subetting\n\n";
 					std::cout << "1) Generate random VLSM Subnetting tasks (random Hosts and random IP)\n";
@@ -251,7 +249,7 @@ void IPAdressManagement::clientProgramm() {
 						goto menu;
 					}
 					else {
-						std::cout << "invalid Input\n";
+						std::cout << "Invalid Input\n";
 						std::cout << "Press Enter to go Back\n";
 						std::cin.get();
 						std::cin.get();
@@ -264,7 +262,7 @@ void IPAdressManagement::clientProgramm() {
 				}
 				else
 				{
-					std::cout << "invalid Input\n";
+					std::cout << "Invalid Input\n";
 					std::cout << "Press Enter to go Back\n";
 					std::cin.get();
 					std::cin.get();
@@ -275,12 +273,12 @@ void IPAdressManagement::clientProgramm() {
 			Ipv6:
 				system("cls");
 				std::cout << "*************************************************************************************\n";
-				std::cout << "                  Subnettingquestions-solver  by Nilusche Liyanaarachchi  (c)        \n";
+				std::cout << "                  SUBNETTO  by Nilusche Liyanaarachchi  (c)		   				   \n";
 				std::cout << "*************************************************************************************\n";
 				std::cout << "IP VERSION 6 Menu (Additional Functions coming soon)\n\n";
 				std::cout << "1) Input IPV6 IP\n";
 				std::cout << "2) Convert IPV4 address to IPV6 (6to4 Rule)\n";
-				std::cout << "3) Identify the addressrange of an IPV6 address to a given subnetmask\n";
+				std::cout << "3) Identify the address range of an IPV6 address to a given subnetmask\n";
 				std::cout << "4) Go Back to Main Menu\n";
 				int l = 0;
 				std::cin >> l;
@@ -325,7 +323,7 @@ void IPAdressManagement::clientProgramm() {
 				}
 				else
 				{
-					std::cout << "invalid Input\n";
+					std::cout << "Invalid Input\n";
 					std::cout << "Press Enter to go Back\n";
 					std::cin.get();
 					std::cin.get();
@@ -344,8 +342,6 @@ void IPAdressManagement::clientProgramm() {
 	catch (...) {
 		std::cout << "Something went wrong. Restart Again" << std::endl;
 	}
-
-
 }
 
 void IPAdressManagement::update_IPV4(std::string IP) {
@@ -383,7 +379,7 @@ void IPAdressManagement::determine_subnet_IPV4(){
 	table.insert({ 255,1 });
 
 
-	std::cout << "find Subnetaddress of: ...\n";
+	std::cout << "Find Subnet address of: ...\n";
 	IPv4.printAdd();
 	Subnet_mask.print_Subnet();
 	std::cout << "\n";
@@ -464,7 +460,7 @@ void IPAdressManagement::determine_subnet_IPV4(){
 void IPAdressManagement::range_of_IPV6() {
 	std::cout << "Make sure to Input the IP Adress before continueing.\n";
 	std::cout << "1) Input IPV6 Address\n";
-	std::cout << "2) Continue with saved Addressed\n";
+	std::cout << "2) Continue with saved Addresses\n";
 	std::cout << "3) Abort process\n";
 	
 	int i = 0;
@@ -562,7 +558,7 @@ void IPAdressManagement::range_of_IPV4() {
 
 	std::vector<int> ip4 = IPv4.getAdd();
 	std::vector<int> network_add(ip4.begin(), ip4.begin() + s);
-	VariadicTable<std::string, std::string, std::string, std::string> vt1({ "Networkaddress", "First IP", "Last IP", "Broadcastaddress" });
+	VariadicTable<std::string, std::string, std::string, std::string> vt1({ "Network address", "First IP", "Last IP", "Broadcastaddress" });
 	std::fill(ip4.begin() + s, ip4.end(), 0);
 	IPV4 net(ip4);
 	auto it = ip4.end() - 1;

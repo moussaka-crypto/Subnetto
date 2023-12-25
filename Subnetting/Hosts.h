@@ -2,6 +2,7 @@
 #define _HOSTS_
 #include <map>
 #include <iostream>
+
 class Hosts {
 public:
 	std::multimap<int, std::string > HostSet;

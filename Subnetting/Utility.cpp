@@ -1,6 +1,7 @@
 #include "Utility.h"
 #include <iostream>
 #include <algorithm>
+
 std::vector<int> decToBinary(int n)
 {
 	std::vector<int> binaryNum(8);
@@ -13,12 +14,14 @@ std::vector<int> decToBinary(int n)
 	reverse(binaryNum.begin(), binaryNum.end());
 	return binaryNum;
 }
+
 int binaryToDecimal(int n)
 {
 	int num = n;
 	int dec_value = 0;
 	int base = 1;
 	int temp = num;
+
 	while (temp) {
 		int last_digit = temp % 10;
 		temp = temp / 10;
@@ -27,69 +30,25 @@ int binaryToDecimal(int n)
 	}
 	return dec_value;
 }
-std::vector<int> hex_to_char(char c) {
-	int ch = toupper(c);
-	if (c == '1') {
-		std::vector<int> tmp{ 0,0,0,1 };
-		return tmp;
-	}
-	if (c == '2') {
-		std::vector<int> tmp{ 0,0,1,0 };
-		return tmp;
-	}
-	if (c == '3') {
-		std::vector<int> tmp{ 0,0,1,1 };
-		return tmp;
-	}
-	if (c == '4') {
-		std::vector<int> tmp{ 0,1,0,0 };
-		return tmp;
-	}
-	if (c == '5') {
-		std::vector<int> tmp{ 0,1,0,1 };
-		return tmp;
-	}
-	if (c == '6') {
-		std::vector<int> tmp{ 0,1,1,0 };
-		return tmp;
-	}
-	if (c == '7') {
-		std::vector<int> tmp{ 0,1,1,1 };
-		return tmp;
-	}
-	if (c == '8') {
-		std::vector<int> tmp{ 1,0,0,0 };
-		return tmp;
-	}
-	if (c == '9') {
-		std::vector<int> tmp{ 1,0,0,1 };
-		return tmp;
-	}
-	if (c == 'A') {
-		std::vector<int> tmp{ 1,0,1,0 };
-		return tmp;
-	}
-	if (c == 'B') {
-		std::vector<int> tmp{ 1,0,1,1 };
-		return tmp;
-	}
-	if (c == 'C') {
-		std::vector<int> tmp{ 1,1,0,0 };
-		return tmp;
-	}
-	if (c == 'D') {
-		std::vector<int> tmp{ 1,1,0,1 };
-		return tmp;
-	}
-	if (c == 'E') {
-		std::vector<int> tmp{ 1,1,1,0 };
-		return tmp;
-	}
-	if (c == 'F') {
-		std::vector<int> tmp{ 1,1,1,1 };
-		return tmp;
-	}
 
+std::vector<int> hex_to_char(char c) {
+
+	char ch = toupper(c);
+	if (('0' <= ch && ch <= '9') || ('A' <= ch && ch <= 'F')) {
+		
+		int hexVal = 0x00;
+		if ('0' <= ch && ch <= '9')
+			hexVal = ch - '0';
+		else
+			hexVal = ch - 'A' + 10;
+
+		std::vector<int> res = {};
+		for (int i = 3; i >= 0; --i) {
+			res.push_back((hexVal >> i) & 1);
+		}
+		return res;
+	}
+	return {};
 }
 
 std::string extractHex(std::vector<int>_2_Bytes) {
@@ -127,7 +86,6 @@ std::string extractHexV2(std::vector<int>_1_Byte) {
 	std::transform(ret.begin(), ret.end(), ret.begin(), ::toupper);
 	return ret;
 }
-
 
 void elongateIPV6(std::string& Ip) {
 	std::string front = "";

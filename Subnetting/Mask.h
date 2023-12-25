@@ -3,6 +3,7 @@
 #include <exception>
 #include <iostream>
 #include <vector>
+
 class Mask {
 private:
 	int slash;
@@ -11,6 +12,7 @@ private:
 	std::string convert_to_dec();
 	std::string Subnet_To_Binary();
 	std::string subnet;
+
 public:
 	Mask() { 
 		this->mask.assign(32, 0);

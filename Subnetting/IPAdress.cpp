@@ -3,12 +3,11 @@
 #include <sstream>
 #include <algorithm>
 #include <stdlib.h>
+
 IPAdress& IPAdress::operator=(const IPAdress& orig) {
 	std::move(orig.Add.begin(), orig.Add.end(), this->Add.begin());
 	return *this;
 }
-
-
 
 void IPV4::init_IP(std::string Ip) {
 	Add.clear();
@@ -17,7 +16,7 @@ void IPV4::init_IP(std::string Ip) {
 
 	if (Ip.find(target) != std::string::npos) {
 		if (countFreq_ofString(target, Ip) > 0)
-			throw std::invalid_argument("IPV4 IP invalid. Check IP for invalid ','");
+			throw std::invalid_argument("IPV4 IP invalid. Check IP for invalid ','.");
 		
 	}
 
@@ -41,8 +40,6 @@ void IPV4::init_IP(std::string Ip) {
 	}
 	
 }
-
-
 
 void IPV6::init_IP(std::string Ip) {
 	Add.clear();
@@ -140,6 +137,7 @@ void IPAdress::convert6to4(IPV4 ipv4) {
 void IPAdress::printAdd() {
 	std::cout << "Bin " <<toStringAddBinary() <<std::endl;
 }
+
 void IPV4::printAdd() {
 	std::cout << "IPV4 Bin " << toStringAddBinary() << " \t" << toStringAddDecimal() << std::endl;
 }
@@ -147,7 +145,6 @@ void IPV4::printAdd() {
 void IPV6::printAdd() {
 	std::cout <<"IPV6 " << toStringAddHex() << std::endl;
 }
-
 
 void IPV4::randomize() {
 	Add.clear();
@@ -160,7 +157,6 @@ void IPV4::randomize() {
 	ip += std::to_string(octett1) + "." + std::to_string(octett2) + "." + std::to_string(octett3) + "."+ std::to_string(octett4);
 	init_IP(ip);
 }
-
 
 std::string IPV4::get_IP() {
 	return toStringAddDecimal();

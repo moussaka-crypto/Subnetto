@@ -1,10 +1,13 @@
 #include "Mask.h"
 #include "Utility.h"
+
 void Mask::validate_notation(int suffix) {
 	if (suffix > 32 && suffix < 0)
 		throw std::invalid_argument("/Notation invalid");
 }
+
 std::string Mask::convert_to_dec() {
+
 	std::vector<int>decimal;
 	for (int i = 0; i < mask.size(); i += 8) {
 		int dec = 0;
@@ -48,6 +51,3 @@ std::string  Mask::get_subnet_string() {
 	this->subnet = convert_to_dec();
 	return subnet;
 }
-
-
-

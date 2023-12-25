@@ -7,14 +7,11 @@ class IPAdress;
 class IPV4;
 class IPV6;
 
-
-
 class IPAdress {
 protected:
 	std::vector<int> Add;
 	
 public:
-
 	IPAdress() {}
 	IPAdress(const IPAdress& orig) {
 		this->Add = orig.Add;
@@ -32,13 +29,13 @@ public:
 	
 };
 
-class IPV4 :public IPAdress {
+class IPV4 : public IPAdress {
 private:
 	std::string toStringAddDecimal();
 public:
-	void init_IP(std::string Ip)override;
-	void printAdd()override;
-	void randomize()override;
+	void init_IP(std::string Ip) override;
+	void printAdd() override;
+	void randomize() override;
 	IPV4() { Add.assign(32, 0); }
 	IPV4(std::string IP) { 
 		Add.assign(32, 0);
@@ -49,12 +46,12 @@ public:
 	
 };
 
-class IPV6 :public IPAdress {
+class IPV6 : public IPAdress {
 private:
 	std::string toStringAddHex();
 public:
-	void init_IP(std::string Ip)override;
-	void printAdd()override;
+	void init_IP(std::string Ip) override;
+	void printAdd() override;
 	IPV6(IPV4 ipv4) { convert6to4(ipv4); }
 	IPV6() { Add.assign(128, 0); }
 	IPV6(std::string IP) { 
